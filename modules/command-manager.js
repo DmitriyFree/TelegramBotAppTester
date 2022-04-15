@@ -2,14 +2,14 @@
 
 const commandManager = {
   newTest(bot, chatId) {
-    bot.sendMessage(chatId, 'Good. Please choose a title for your new test');
+    bot.sendMessage(chatId, 'Хорошо, введите название вашего теста');
   },
   createdTest(bot, chatId, data) {
     bot.sendMessage(
       chatId,
-      `Congratulete! You created new test with name ${data}
-      \n/addquestion - add question
-      \n/help - list all commands`
+      `Поздравляем, вы созали новый тест с названием ${data}
+      \n/addquestion - добавить вопросы
+      \n/help - список всех комманд`
     );
   },
   chooseCommand(bot, chatId) {
@@ -34,7 +34,7 @@ const commandManager = {
   showTests(bot, chatId, testList) {
 
     if (testList.length === 0) {
-      bot.sendMessage(chatId, `not any test\n/newtest - create new test`);
+      bot.sendMessage(chatId, `У вас нет тестов\n/newtest - создать новый`);
       return false;
     }
     const arr = [];
@@ -55,7 +55,7 @@ const commandManager = {
     });
     arr.push(row);
 
-    bot.sendMessage(chatId, 'Choose test', {
+    bot.sendMessage(chatId, 'Выберете тест', {
       reply_markup: {
         inline_keyboard: arr,
       },
@@ -82,7 +82,7 @@ const commandManager = {
     });
     arr.push(row);
 
-    bot.sendMessage(chatId, 'Choose test', {
+    bot.sendMessage(chatId, 'Выберете тест', {
       reply_markup: {
         inline_keyboard: arr,
       },
@@ -127,7 +127,7 @@ const commandManager = {
   },
   trueAnswer(bot, chatId, answers) {
     if (answers.length === 0) {
-      bot.sendMessage(chatId, `not any test\n/newtest - create new test`);
+      bot.sendMessage(chatId, `У вас нет тестов\n/newtest - создать новый`);
       return false;
     }
     const arr = [];
@@ -148,7 +148,7 @@ const commandManager = {
     });
     arr.push(row);
 
-    bot.sendMessage(chatId, 'Choose true answer', {
+    bot.sendMessage(chatId, 'Выберете правильный ответ', {
       reply_markup: {
         inline_keyboard: arr,
       },
@@ -159,7 +159,7 @@ const commandManager = {
     bot.sendMessage(
       chatId,
       `Вопрос добавлен
-      \n /addquestion - add new question\n /help - enother commands`
+      \n /addquestion - добавить новый вопрос\n /help - список всех команд`
     );
   },
   showAllQuestions(bot, chatId, test) {
@@ -192,7 +192,7 @@ const commandManager = {
     bot.sendMessage(chatId, `Все вопросы были очишчены`);
   },
   default(bot, chatId) {
-    bot.sendMessage(chatId, `I don't understand you\n/help - for see list of commands`);
+    bot.sendMessage(chatId, `Я не понимаю тебя\n/help - список доступный комманд`);
   },
 };
 
