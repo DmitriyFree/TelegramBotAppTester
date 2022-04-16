@@ -10,19 +10,6 @@ const commandManager = {
       \n/help - список всех комманд`
     );
   },
-  chooseCommand(bot, chatId) {
-    bot.sendMessage(chatId, 'Выбери действие', {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: 'Изменить название', callback_data: 'ddd' },
-            { text: 'Добавить вопрос', callback_data: 'ddd' },
-            { text: 'Удалить вопрос', callback_data: 'ddd' },
-          ],
-        ],
-      },
-    });
-  },
   setNewTitle(bot, chatId) {
     bot.sendMessage(chatId, 'Выберете новое назвние для теста');
   },
@@ -169,12 +156,12 @@ const commandManager = {
     } else {
       let str = `${test.title}\n\n`;
       questions.forEach((item, index) => {
-        str += `#${index + 1} ${item.title}\n`;
-        const { answers } = item;
+        str += `#${index + 1} ${item.title}\n  Ответы:`;
+        const { answers, trueanswer } = item;
         answers.forEach((answer) => {
-          str += `  ${answer}\n`;
+          str += ` ${answer},`;
         });
-        str += `\n`;
+        str += `\n  Истина: ${trueanswer} \n\n`;
       });
       bot.sendMessage(chatId, str);
     }
