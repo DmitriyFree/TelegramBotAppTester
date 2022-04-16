@@ -1,5 +1,3 @@
-
-
 const commandManager = {
   newTest(bot, chatId) {
     bot.sendMessage(chatId, 'Хорошо, введите название вашего теста');
@@ -32,7 +30,6 @@ const commandManager = {
     bot.sendMessage(chatId, 'Название теста было успешно изменино');
   },
   showTests(bot, chatId, testList) {
-
     if (testList.length === 0) {
       bot.sendMessage(chatId, `У вас нет тестов\n/newtest - создать новый`);
       return false;
